@@ -1,0 +1,82 @@
+\documentclass{article}
+\usepackage[margin=2cm]{geometry}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage[all]{hypcap}
+\usepackage[title,titletoc,toc]{appendix}
+\usepackage[english]{babel}
+\usepackage[style=authoryear,backend=biber,sorting=nyt,dashed=false,urldate=long,abbreviate=false]{biblatex}
+\usepackage{float}
+\usepackage{fancyhdr}
+\usepackage{microtype}
+\graphicspath{ {./images/} }
+
+\setlength{\headheight}{15.2pt}
+\pagestyle{fancy}
+\lhead{}
+\chead{}
+\rhead{\bfseries Phase 2 Documentation}
+\lfoot{Broadsword-Notification Team}
+\cfoot{COS 301 Software Engineering}
+\rfoot{Page \thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{1ex plus 0.5ex minus 0.2ex}
+
+\frenchspacing
+
+
+\title{\includegraphics[width=12cm]{Eeufeeslogo.jpg} \\
+	\vspace{1.0cm}
+	Implementation Specifications \\ 
+	and Design \\
+	\vspace{0.5cm}
+	NavUP \\
+	University of Pretoria \\
+	\vspace{0.5cm}
+	%\today\\
+	\vspace{8.0cm}
+	Broadsword-Notification\\
+	\vspace{0.5cm}
+}
+
+\author{
+	Magubane, Siyabonga\\
+	\texttt{u15289347@tuks.co.za}
+	\and
+	Bamuza, Kulani\\
+	\texttt{u15008402@tuks.co.za}
+	\and
+	Daubinet, Jordan\\
+	\texttt{u15260870@tuks.co.za}
+	\and
+	Hammond, Eunice\\
+	\texttt{u13222563@tuks.co.za}
+	\and
+	Willemse, Wanrick \\
+	\texttt{u29560617@tuks.co.za}
+	\vspace{0.5cm}
+	}
+
+\begin{document}
+	\maketitle
+	\thispagestyle{empty}
+	\clearpage
+	
+	\newpage
+	\pagenumbering{arabic}
+	\thispagestyle{empty}
+	\clearpage
+	
+	\newpage
+	
+  \section{Notification Module}
+  
+  \subsection{functionality}
+This is where we can list some of the functionality we implemented          in our notification module
+  \subsection{integration}
+This is where we can list how our module will be integrated     together with the other modules. List of  services that the module will have to acquire from other modules and what service will our module deliver to the other modules
+			
+\end{document}
