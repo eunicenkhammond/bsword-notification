@@ -61,6 +61,10 @@ class myHandler(BaseHTTPRequestHandler):
         def send_Email(notificationRequest):
           #to implement
           return
+	
+	def log_message(notifactionRequest):
+	  #to implement
+          return
         
 try:
 	#Create a web server and define the handler to manage the
