@@ -21,7 +21,7 @@
                         if (xhr.readyState === 4 && xhr.status === 200) 
                         {
                             var json = JSON.parse(xhr.responseText);
-                            alert("We have a response from the server. UserID : "+json.userID+", message : "+json.message+", noticeType : "+json.noticeType);
+                            alert("We have a response from the server. UserID : "+json.userID+", noticeType : "+json.noticeType+", message : "+json.message);
                         }
                     };
                     var obj = new Object();
