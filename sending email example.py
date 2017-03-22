@@ -1,15 +1,18 @@
 #!/usr/bin/python3 
+import notificationRequest.py
 import smtplib
-content = 'example email stuff here'
 
-mail = smtplib.SMTP('smtp.gmail.com',587)
+content = createNotification('bswordnotification@gmail.com','testing notification mockup')
 
-mail.ehlo()
+def sendmail(notificationRequest)
+	mail = smtplib.SMTP('smtp.gmail.com',587)
 
-mail.starttls()
+	mail.ehlo()
 
-mail.login('bswordnotification@gmail.com' , 'notification301')
+	mail.starttls()
 
-mail.sendmail('bswordnotification@gmail.com','siya12896@gmail.com',content)
+	mail.login('bswordnotification@gmail.com' , 'notification301')
 
-mail.close()
+	mail.sendmail('bswordnotification@gmail.com','u15289347@tuks.co.za',content)
+
+	mail.close()
