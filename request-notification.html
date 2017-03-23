@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta name="author" content="Broadsword" />
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+	<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<title>Notify</title>
+	<script>
+            function sendData()
+            {
+                element1 = document.getElementById("userID").value;
+                element2 = document.getElementById("message").value;
+                element3 = document.getElementById("noticeType").value;
+                    xhr = new XMLHttpRequest();
+                    var url = "server.py";
+                    xhr.open("POST", url, true);
+                    xhr.setRequestHeader("Content-type", "application/json");
+                    xhr.onreadystatechange = function () 
+                    { 
+                        if (xhr.readyState === 4 && xhr.status === 200) 
+                        {
+                            var json = JSON.parse(xhr.responseText);
+                            alert("We have a response from the server. UserID : "+json.userID+", noticeType : "+json.noticeType+", message : "+json.message);
+                        }
+                    };
+                    var obj = new Object();
+                    obj.userID = element1.toString();
+                    obj.message = element2.toString();
+                    obj.noticeType = element3.toString();
+                    var jsonString = JSON.stringify(obj);
+                    xhr.send(jsonString);
+            }
+
+        </script>
+</head>
+<body>
+	<div class="container">
+		<h1>Notification Demo</h1>
+		<form id="myForm">			<!-- ENTER ACTION FOR FORM SUBMIT -->
+			<div class="form-group">
+				<label for="userID">UserID:(Email for demo purposes)</label>
+				<input type="email" name="userID"  id="userID" />
+			</div>
+                        <div class="form-group">
+				<label for="noticeType">Notice Type:</label>
+				<input type="text" name="noticeType"  id="noticeType" />
+			</div>
+			<div class="form-group">
+				<label for="message">Message:</label>
+				<textarea class="form-control" name="notifyMsg" id="message"></textarea>
+			</div>
+			<button type="button" onclick="sendData()">Submit</button>
+		</form>
+	</div>
+</body>
+</html>
