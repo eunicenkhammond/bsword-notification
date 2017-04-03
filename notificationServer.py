@@ -38,12 +38,7 @@ class myHandler(BaseHTTPRequestHandler):
             self.data_string = self.rfile.read(int(self.headers['Content-Length']))
             data = json.loads(self.data_string)
 
-# INSERT SERVER MAIL ADDRESS HERE:
-
-            emailReq = createNotification("", data['userID'], data['noticeType'], data['message'])
-
-            send_email(emailReq)
-
+            #notificationRequest = NotificationRequest(data['userID'], data['message'], data['noticeType'])
             #notificationRequest = NotificationRequest("test", "test", "test")
             #sendEmail(notificationRequest)
 
@@ -62,43 +57,11 @@ class myHandler(BaseHTTPRequestHandler):
             self.send_header('Content-type',"application/x-www-form-urlencoded")
             self.end_headers()
             self.wfile.write(json_data)
-            return
+            return 
 
-        def createNotification(sender, receiver, subject, messageBody):
-			message = MIMEText(messageBody)
-			message['to'] = receiver
-			message['from'] = sender
-			message['subject'] = subject
-			return {'raw': base64.urlsafe_b64encode(message.as_string())}
-
-		def sendMessage(service, uId, message):
-			try:
-				message = (service.users().messages().send(userId="me", body=message)
-				       .execute())
-				print 'Message Id: %s' % message['id']
-				return message
-			except errors.HttpError, error:
-				print 'An error occurred when sending the notification: %s' % error
-			
-
-        def send_Email(request):
-        	requestLength = int(request.headers.getheader('content-length'))
-			body = request.rfile.read(requestLength)
-			try:
-				resultingRequest = json.loads(body, encoding='utf-8')
-
-# INSERT SERVER EMAIL HERE
-				
-				noticeToSend = createNotification("", resultingRequest.userID, resultingRequest.noticeType, resultingRequest.message)
-				
-# INSERT SERVER GMAIL API INSTANCE HERE 1st ARGUMENT, 2nd ARGUMENT SHOULD BE ABLE TO REMAIN EMPTY STRING
-				
-				sendMessage(,"",noticeToSend)
-
-				request.wfile.write('Notification processed.')
-			except Exception as e:
-				request.wfile.write('Failed to process notification. Error: %s', e.message)
-			return
+        def send_Email(notificationRequest):
+          #to implement
+          return
 	
 	def log_message(notifactionRequest):
 	  #to implement
