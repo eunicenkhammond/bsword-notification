@@ -37,6 +37,7 @@ class myHandler(BaseHTTPRequestHandler):
             print "in post method"
             self.data_string = self.rfile.read(int(self.headers['Content-Length']))
             data = json.loads(self.data_string)
+
             #notificationRequest = NotificationRequest(data['userID'], data['message'], data['noticeType'])
             #notificationRequest = NotificationRequest("test", "test", "test")
             #sendEmail(notificationRequest)
