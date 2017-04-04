@@ -38,9 +38,9 @@ class NotificationRequest():
                 server.login(fromaddr, 'notification301')
                 text = msg.as_string()
                 server.sendmail(fromaddr, toaddr, text)
-                writer.pub('', '{"src"  : "Notification", "dest" : "'+reqObj.src+'", "msgType" : "response", "queryType" : "", "content" : { "success" : "true", "error" : ""}}')
+                writer.pub(reqObj.src, '{"src"  : "Notification", "dest" : "'+reqObj.src+'", "msgType" : "response", "queryType" : "", "content" : { "success" : "true", "error" : ""}}')
             except errors.HttpError as err:
-                writer.pub('', '{"src"  : "Notification", "dest" : "'+reqObj.src+'", "msgType" : "response", "queryType" : "", "content" : { "success" : "false", "error" : "Error: '+err+'"}}')
+                writer.pub(reqObj.src, '{"src"  : "Notification", "dest" : "'+reqObj.src+'", "msgType" : "response", "queryType" : "", "content" : { "success" : "false", "error" : "Error: '+err+'"}}')
 
             return
         
@@ -50,6 +50,7 @@ class NotificationRequest():
             return
         
 try:
+    writer = nsq Writer('127.0.0.1', 4150)
     requestServer = nsq.Reader(message_handler=NotificationRequest.sendEmail(request), lookupd_http_addresses=['http://127.0.0.1:4161'], topic='Notification', channel='NavUP', lookupd_poll_interval=15)
 	nsq.run()
 
